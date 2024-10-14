@@ -1,0 +1,120 @@
+.agenda > h6 {
+  margin-top: 0.5rem;
+}
+
+.agenda__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  padding-bottom: 0;
+  padding-top: 1rem;
+}
+
+.agenda__day {
+  --li-bottom-margin: 0.8rem;
+  --span-line-height: 1.3em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.agenda__day + .agenda__day {
+  margin-top: 1rem;
+}
+
+.agenda__day > h3 {
+  color: rgb(var(--primary-color));
+  font-weight: 400;
+}
+
+.agenda__day > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.agenda__day > ul > div,
+.agenda__day > ul > li {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.agenda__day > ul li + li,
+.agenda__day > ul > li {
+  margin-top: var(--li-bottom-margin);
+}
+
+.agenda__day > ul li {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.listitem__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.agenda__day > ul li span {
+  color: var(--text-one-color);
+  font-weight: bold;
+  line-height: var(--span-line-height);
+}
+
+.agenda__marker {
+  --marker-circle-size: 1.7rem;
+
+  position: absolute;
+  top: calc(-1 * var(--marker-circle-size) / 2 + var(--span-line-height) / 2);
+  left: 0;
+  width: 3rem;
+  height: calc(
+    100% + 2 * (var(--marker-circle-size) / 2 - var(--span-line-height) / 2) +
+      var(--li-bottom-margin) + var(--span-line-height)
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker__circle {
+  width: var(--marker-circle-size);
+  height: var(--marker-circle-size);
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marker__circle::before {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: var(--text-one-color);
+}
+
+.marker__circle:first-child {
+  top: 0;
+}
+
+.marker__circle:last-child {
+  bottom: 0;
+}
+
+.marker__line {
+  width: calc(var(--marker-circle-size) / 2.8);
+  height: calc(100% - var(--marker-circle-size));
+  background-color: var(--accent-color);
+  top: 0;
+  left: 50%;
+}

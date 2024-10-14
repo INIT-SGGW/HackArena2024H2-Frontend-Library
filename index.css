@@ -1,0 +1,424 @@
+:root {
+  /* COLORS */
+  --background-color: 0, 3, 20;
+  --background-color-transparent: #7c7a6ab7;
+  --background-secondary-color: #1a160f;
+  --primary-color: 255, 210, 0;
+  --bg: #000314;
+  --secondary-color: #4b5068;
+  --accent-color: #757c9f;
+  --text-one-color: #ffffff;
+  --text-two-color: #000314;
+  --input-color: var(--text-one-color);
+  --input-disabled-color: #a88900;
+  --shadow-color: #34554b5d;
+  --warning-color: #f56f6f;
+
+  --input-color: var(--text-one-color);
+  --input-hover: rgb(var(--background-color));
+  --input-acitve: rgb(var(--background-color));
+  --input-error: var(--warning-color);
+  --disabled-color: rgb(71, 71, 71);
+
+  /* SCREEN SIZES */
+  --mobile: 375px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --desktop: 1440px;
+
+  --page-width: min(100%, 1000px);
+
+  --hover-transition-time: 0.14s;
+}
+
+* {
+  font-family: "JetBrains Mono", "Poppins", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: rgb(var(--background-color));
+
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+}
+
+form {
+  width: 100%;
+  max-width: 800px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.not-clickable {
+  pointer-events: none;
+  cursor: default;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* SCREEN SIZES */
+@media (min-width: 0) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 375px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    font-size: 21px;
+  }
+}
+
+/* HEADERS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-one-color);
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Russo One";
+  letter-spacing: 0.03em;
+}
+
+h1 {
+  font-size: 3rem;
+  /* line-height: 3rem; */
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  color: var(--text-one-color);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  color: var(--text-one-color);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
+.pagewidth {
+  max-width: var(--page-width);
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.section {
+  padding-top: 6rem;
+  max-width: 900px;
+}
+
+.section--column-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section--column-0 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.section--column-05 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.section--row-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section__padding {
+  padding: 6rem 0;
+}
+
+/* BUTTONS */
+
+.btn {
+  padding: 0.4rem 1.7rem;
+  box-sizing: border-box;
+  border: 3px solid;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+  font-weight: bold;
+}
+/* 
+.btn::after {
+  content: attr(button-text);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  z-index: 1;
+  transition: all 0.25s;
+  border: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.btn:hover::after {
+  width: 100%;
+} */
+
+.btn__primary {
+  background-color: rgb(var(--primary-color));
+  color: rgb(var(--background-color));
+  border-color: rgb(var(--primary-color));
+}
+
+.btn__primary-hover {
+  background-color: rgb(var(--background-color));
+  border-color: rgb(var(--background-color));
+  color: rgb(var(--primary-color));
+}
+
+.btn__primary-border-hover {
+  background-color: rgb(var(--background-color));
+  border-color: rgb(var(--primary-color));
+  color: rgb(var(--primary-color));
+}
+
+.btn__primary-b {
+  background-color: rgb(var(--background-color));
+  color: rgb(var(--primary-color));
+  border: 3px solid rgb(var(--background-color));
+}
+
+.btn__primary-b-hover {
+  background-color: rgb(var(--primary-color));
+  border-color: rgb(var(--primary-color));
+  color: rgb(var(--background-color));
+}
+
+.btn__primary-b-border-hover {
+  background-color: rgb(var(--primary-color));
+  border-color: rgb(var(--background-color));
+  color: rgb(var(--background-color));
+}
+
+.btn__primary-bw {
+  background-color: rgb(var(--background-color));
+  color: var(--text-one-color);
+  border: 3px solid rgb(var(--background-color));
+}
+
+.btn__primary-bw-hover {
+  background-color: var(--text-one-color);
+  border-color: var(--text-one-color);
+  color: rgb(var(--background-color));
+}
+
+.btn__primary-bw-border-hover {
+  background-color: var(--text-one-color);
+  border-color: rgb(var(--background-color));
+  color: rgb(var(--background-color));
+}
+
+.btn__primary-w {
+  background-color: var(--text-one-color);
+  color: rgb(var(--background-color));
+  border: 3px solid var(--text-one-color);
+}
+
+.btn__primary-w-hover {
+  background-color: rgb(var(--background-color));
+  border-color: rgb(var(--background-color));
+  color: var(--text-one-color);
+}
+
+.btn__primary-w-border-hover {
+  color: var(--text-one-color);
+  background-color: rgb(var(--background-color));
+  border-color: var(--text-one-color);
+}
+
+.btn__secondary {
+  background-color: rgb(var(--background-color));
+  border: 3px solid rgb(var(--primary-color));
+  color: rgb(var(--primary-color));
+}
+
+.btn__secondary-hover {
+  background-color: rgb(var(--primary-color));
+  border: 3px solid rgb(var(--primary-color));
+  color: rgb(var(--background-color));
+}
+
+.btn__secondary-w {
+  background-color: rgb(var(--background-color));
+  border: 3px solid var(--text-one-color);
+  color: var(--text-one-color);
+}
+
+.btn__secondary-w-hover {
+  background-color: var(--text-one-color);
+  color: rgb(var(--background-color));
+  border-color: var(--text-one-color);
+}
+
+.btn__secondary-b {
+  background-color: rgb(var(--primary-color));
+  border: 3px solid rgb(var(--background-color));
+  color: rgb(var(--background-color));
+}
+
+.btn__secondary-b-hover {
+  background-color: rgb(var(--background-color));
+  color: rgb(var(--primary-color));
+  border-color: rgb(var(--background-color));
+}
+
+.btn__halfborder:first-child {
+  border-right: none;
+  border-radius: var(--account-button-border-radius) 0 0
+    var(--account-button-border-radius) !important;
+}
+
+.btn__halfborder:last-child {
+  border-left: none;
+  border-radius: 0 var(--account-button-border-radius)
+    var(--account-button-border-radius) 0 !important;
+}
+
+/* HEADERS */
+
+.header__white {
+  color: rgb(var(--background-color));
+  background-color: var(--text-one-color);
+}
+
+.header__black {
+  background-color: rgb(var(--background-color));
+  color: rgb(var(--primary-color));
+}
+
+.header__black-white {
+  color: var(--text-one-color);
+  background-color: rgb(var(--background-color));
+}
+
+.header__yellow {
+  color: rgb(var(--background-color));
+  background-color: rgb(var(--primary-color));
+}
+
+.header__black,
+.header__white,
+.header__black-white,
+.header__yellow {
+  padding: 0em 1.5rem;
+  text-align: center;
+}
+
+.header__wider {
+  --header__wider-padding: 2rem;
+  padding-left: var(--header__wider-padding);
+  padding-right: var(--header__wider-padding);
+}
+
+.header__taller {
+  --header__taller-padding: 0.3rem;
+  padding-bottom: var(--header__taller-padding);
+  padding-top: var(--header__taller-padding);
+}

@@ -1,0 +1,9 @@
+{
+  "name": "hackarena-website-library",
+  "version": "1.0.0",
+  "description": "React library containing all styles and components for hackarena websites.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "MIT"
+}
