@@ -2,7 +2,7 @@ import "./FileUploader.css";
 import { FileUploader as FU } from "react-drag-drop-files";
 import { useState } from "react";
 import text from "../../Assets/Text/main.json";
-import { Button } from "../";
+import { Button } from "..";
 import { getEventStatus, EventStatus } from "../../Utils";
 
 interface Props { }

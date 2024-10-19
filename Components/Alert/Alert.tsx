@@ -1,5 +1,5 @@
 import './Alert.css'
-import { Button } from '../'
+import { Button } from '..'
 
 interface Props {
     title: string,

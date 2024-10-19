@@ -4,7 +4,7 @@ import text from '../../Assets/Text/main.json'
 import { eventStartDate, registrationEndDate } from '../../Constants'
 import { useTimeToEvent } from '../../Hooks'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '../'
+import { Button } from '..'
 
 interface ComponentText {
     title: {
