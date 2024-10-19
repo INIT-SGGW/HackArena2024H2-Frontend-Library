@@ -1,6 +1,5 @@
-import React from 'react'
 import './Alert.css'
-import Button from '../Button/Button'
+import { Button } from '../'
 
 interface Props {
     title: string,
@@ -38,7 +37,7 @@ function Alert({
                     {
                         (buttonTwoText && buttonTwoAction) &&
                         <Button
-                            className='btn btn__secondary btn__secondary-border'
+                            className='btn btn__secondary'
                             onClick={buttonTwoAction}
                         >
                             {buttonTwoText}

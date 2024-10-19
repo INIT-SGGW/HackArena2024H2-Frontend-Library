@@ -1,6 +1,6 @@
 import { registrationEndDate, registrationStartDate, eventEndDate, eventStartDate } from "../Constants/Dates";
 
-export enum EventStatus {
+enum EventStatus {
     CloseToRegistration,
     RegistrationOpen,
     RegistrationClosed,
@@ -31,4 +31,4 @@ const getEventStatus = () => {
     }
 }
 
-export default getEventStatus;
+export { getEventStatus, EventStatus };

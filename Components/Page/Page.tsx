@@ -14,10 +14,10 @@ interface PageProps {
 function Page({ children, pageTitle, description, paddingTop = true, noIndex = false, paddingBottom = true }: PageProps) {
 
     useEffect(() => {
-        {/* Setting page title */ }
+        // Setting page title
         document.title = pageTitle;
 
-        {/* Setting meta description */ }
+        // Setting meta description
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
             // check if the description is already set
@@ -30,7 +30,7 @@ function Page({ children, pageTitle, description, paddingTop = true, noIndex = f
             document.head.appendChild(metaDescription);
         }
 
-        {/* Setting noindex meta tag */ }
+        // Setting noindex
         const metaRobots = document.querySelector('meta[name="robots"][content="noindex"]');
         if (metaRobots) {
             // check if the noindex is already set

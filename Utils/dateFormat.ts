@@ -15,4 +15,4 @@ const dateFormat = (date: Date, format: DateFormat = DateFormat.FULL): string =>
     }
 }
 
-export default dateFormat;
+export { dateFormat };

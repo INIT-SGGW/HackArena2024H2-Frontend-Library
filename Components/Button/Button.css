@@ -2,11 +2,13 @@
   position: relative;
   height: fit-content;
   min-width: fit-content;
+  width: fit-content;
   overflow: hidden;
+  text-wrap: nowrap;
 }
 
-.button {
-  text-wrap: nowrap;
+.button button {
+  width: 100%;
 }
 
 .button__double {
@@ -16,6 +18,11 @@
   width: 0%;
   overflow: hidden;
   transition: all var(--hover-transition-time) ease-out;
+}
+
+.button--disabled {
+  background-color: var(--input-disabled-color);
+  border-color: var(--input-disabled-color);
 }
 
 @media screen and (min-width: 840px) {

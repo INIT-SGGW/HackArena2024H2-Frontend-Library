@@ -1,13 +1,10 @@
-import React from 'react'
 import './LiveEventHighlight.css'
-import getEventStatus, { EventStatus } from '../../Utils/getEventStatus'
-import text from '../../Assets/text.json'
-import replacePlaceholders from '../../Utils/replacePlaceholders'
-import dateFormat, { DateFormat } from '../../Utils/dateFormat'
-import { eventStartDate, registrationEndDate } from '../../Constants/Dates'
-import useTimeToEvent from '../../Hooks/useTimeToEvent'
+import { getEventStatus, EventStatus, replacePlaceholders, dateFormat, DateFormat } from '../../Utils'
+import text from '../../Assets/Text/main.json'
+import { eventStartDate, registrationEndDate } from '../../Constants'
+import { useTimeToEvent } from '../../Hooks'
 import { useNavigate } from 'react-router-dom'
-import Button from '../Button/Button'
+import { Button } from '../'
 
 interface ComponentText {
     title: {

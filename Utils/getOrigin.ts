@@ -8,3 +8,14 @@ export const getAPIOrigin = (): string => {
             return 'http://localhost:8080';
     }
 }
+
+export const getQualiApiOrigin = (): string => {
+    switch (process.env.NODE_ENV) {
+        case 'production':
+            return 'https://quali.hackarena.pl';
+        case 'test':
+            return 'https://quali.hackarena.pl';
+        default:
+            return 'http://localhost:5000';
+    }
+}

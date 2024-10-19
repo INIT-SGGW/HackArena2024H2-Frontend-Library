@@ -1,10 +1,9 @@
 import "./FileUploader.css";
 import { FileUploader as FU } from "react-drag-drop-files";
 import { useState } from "react";
-import text from "../../Assets/text.json";
-import AccountService from "../../Services/AccountService";
-import Button from "../Button/Button";
-import getEventStatus, { EventStatus } from "../../Utils/getEventStatus";
+import text from "../../Assets/Text/main.json";
+import { Button } from "../";
+import { getEventStatus, EventStatus } from "../../Utils";
 
 interface Props { }
 
@@ -32,20 +31,20 @@ function FileUploader(props: Props) {
   const handleSendFile = () => {
     setMessage("Wysyłanie pliku...")
     setStatus(FileStatus.SENDING);
-
-    const teamName = localStorage.getItem("teamName") || "";
-    AccountService.uploadSolution(teamName, file as File).then((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        setMessage("Plik został wysłany pomyślnie")
-        setStatus(FileStatus.SUCCESS);
-      } else {
-        throw new Error("Wystąpił błąd podczas wysyłania pliku")
-      }
-    }).catch((error) => {
-      setMessage("Wystąpił błąd podczas wysyłania pliku")
-      setStatus(FileStatus.ERROR);
-      setFile(null);
-    });
+    console.log("File: ", file);
+    // const teamName = localStorage.getItem("teamName") || "";
+    //   AccountService.uploadSolution(teamName, file as File).then((response) => {
+    //     if (response.status >= 200 && response.status < 300) {
+    //       setMessage("Plik został wysłany pomyślnie")
+    //       setStatus(FileStatus.SUCCESS);
+    //     } else {
+    //       throw new Error("Wystąpił błąd podczas wysyłania pliku")
+    //     }
+    //   }).catch((error) => {
+    //     setMessage("Wystąpił błąd podczas wysyłania pliku")
+    //     setStatus(FileStatus.ERROR);
+    //     setFile(null);
+    //   });
   }
 
   const handleCancel = () => {

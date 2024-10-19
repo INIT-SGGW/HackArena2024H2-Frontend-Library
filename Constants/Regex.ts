@@ -1,4 +1,6 @@
-const PasswordRegex = String.raw`^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.,=?\/\\<>+_\{\}\[\]\|\(\)\;\:'"\-]).{8,}$`;
-const TextRegex = String.raw`^[A-Za-zÀ-ÖØ-öø-ÿąćółżźńęĄĆÓŁŻŹŃĘ' \-]+$`;
-const EmailRegex = String.raw`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`;
-export { PasswordRegex, TextRegex, EmailRegex };
+const PasswordRegexString = String.raw`^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*.,=?\/\\<>+_\{\}\[\]\|\(\)\;\:'"\-]).{8,}$`;
+const TextRegexString = String.raw`^[A-Za-zÀ-ÖØ-öø-ÿąćółżźńęĄĆÓŁŻŹŃĘ' \-]+$`;
+const EnglishAlphabetRegexString = String.raw`^[A-Za-z]+$`;
+const EmailRegexString = String.raw`^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,4}$`;
+const TextRegex = new RegExp(TextRegexString);
+export { PasswordRegexString, TextRegexString, EmailRegexString, TextRegex, EnglishAlphabetRegexString };

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import "./NavBar.css";
-import text from "../../Assets/text.json";
+import text from "../../Assets/Text/main.json";
 import { Link } from "react-router-dom";
-import useWindowWidth from "../../Hooks/useWindowWidth";
+import { useWindowWidth } from "../../Hooks";
 import Menu from "../../Assets/menu.svg";
-// import MenuOpen from "../../Assets/menu-open.svg";
+import { NavItems } from "./types";
 
 export const NavBarButton = ({ text, link, setShowSidebar, special = false }: { text: string, link: string, setShowSidebar?: Function, special?: boolean }) => {
   return (
@@ -30,13 +29,12 @@ export const NavBarButton = ({ text, link, setShowSidebar, special = false }: { 
   )
 }
 
-function NavBar({ showSideBar, setShowSidebar }: { showSideBar?: boolean, setShowSidebar?: Function }) {
+function NavBar({ showSideBar, setShowSidebar, navItems }: { showSideBar?: boolean, setShowSidebar?: Function, navItems: NavItems }) {
   const windowWidth = useWindowWidth();
-  const navItems = text.nav.navItems;
 
   const NavSection = () => (
     <nav className="navbar__nav">
-      {navItems.map((item, index) => {
+      {navItems.navItems.map((item, index) => {
         return (
           <NavBarButton key={index} text={item.title} link={item.path} setShowSidebar={setShowSidebar} special={item.special} />
         );
@@ -49,12 +47,12 @@ function NavBar({ showSideBar, setShowSidebar }: { showSideBar?: boolean, setSho
 
       {(windowWidth < 768 && setShowSidebar !== undefined && showSideBar !== undefined) ? (
         <>
-          <a
+          <button
             className="navbar__sidebar-icon"
             onClick={() => setShowSidebar(!showSideBar)}
           >
             <img src={Menu} alt="Menu" />
-          </a>
+          </button>
           <div
             className={`navbar__sidebar${!showSideBar ? " navbar__sidebar--hidden" : ""
               }`}

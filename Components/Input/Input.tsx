@@ -1,9 +1,7 @@
-import React, { MouseEventHandler, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './Input.css'
-import { setErrorMessages } from '../../Utils/handleErrorMessages'
+import { setErrorMessages } from '../../Utils'
 import { InputProps } from './types';
-import addIcon from "../../Assets/add-circle.svg";
-
 
 /**
  * Input component
@@ -25,6 +23,7 @@ function Input({
     id,
     name,
     showError,
+    showLabel = true,
     inputDisabled = false,
     requrired = true,
     pattern = undefined,
@@ -60,7 +59,7 @@ function Input({
                 }
             })
         }
-    }, [])
+    })
 
     const handleOnClick = (): void => {
         const input = document.getElementById(id) as HTMLInputElement;
@@ -80,9 +79,12 @@ function Input({
 
     return (
         <div className="input">
-            <label htmlFor={id} >
-                {pageText.label}
-            </label>
+            {
+                showLabel &&
+                <label htmlFor={id} >
+                    {pageText.label}
+                </label>
+            }
             <div className="input__wrapper input__wrapper--full-width">
                 <input
                     className={`input__element input__field${(error && showLocalError) ? " input__element--error" : ""

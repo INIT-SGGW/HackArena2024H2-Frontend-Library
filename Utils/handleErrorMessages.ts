@@ -1,5 +1,5 @@
-import text from "../Assets/text.json";
-import replacePlaceholders from "./replacePlaceholders";
+import text from "../Assets/Text/main.json";
+import { replacePlaceholders } from ".";
 
 
 const setErrorMessages = (

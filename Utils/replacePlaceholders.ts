@@ -13,4 +13,4 @@ function replacePlaceholders(message: string, value: string | string[]): string 
     return message;
 }
 
-export default replacePlaceholders;
+export { replacePlaceholders };

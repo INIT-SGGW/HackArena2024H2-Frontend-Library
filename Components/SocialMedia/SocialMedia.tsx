@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import './SocialMedia.css'
 import FacebookIcon from "../../Assets/facebook.svg";
 import InstagramIcon from "../../Assets/instagram.svg";
-import DiscordIcon from "../../Assets/discord.svg";
 import LinkedInIcon from "../../Assets/linkedin.svg";
 
 function SocialMedia({ black = false, mobileHeight = false }: { black?: boolean, mobileHeight?: boolean }) {
@@ -11,7 +10,6 @@ function SocialMedia({ black = false, mobileHeight = false }: { black?: boolean,
     const socialMedia = [
         { icon: FacebookIcon, link: "https://www.facebook.com/profile.php?id=61559358943109&is_tour_dismissed", name: "Facebook" },
         { icon: InstagramIcon, link: "https://www.instagram.com/kn_init_/", name: "Instagram" },
-        // { icon: DiscordIcon, link: "https://discord.com/invite/YekgmBp9K4", name: "Discord" },
         { icon: LinkedInIcon, link: "https://www.linkedin.com/company/ko%C5%82o-naukowe-init/about/", name: "LinkedIn" }
     ]
 
@@ -46,7 +44,7 @@ function SocialMedia({ black = false, mobileHeight = false }: { black?: boolean,
                 })
             }
         }
-    }, [])
+    }, [socialRef])
 
     return (
         <div ref={socialRef} className={`social ${mobileHeight ? "social-mobile" : ""}`} style={{ filter: black ? "brightness(0)" : "brightness(1)" }}>

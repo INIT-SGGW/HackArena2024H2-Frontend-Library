@@ -9,6 +9,7 @@ export interface InputProps {
     id: string
     name: string
     showError: boolean
+    showLabel?: boolean
     inputDisabled?: boolean
     type?: string
     icon?: string | undefined

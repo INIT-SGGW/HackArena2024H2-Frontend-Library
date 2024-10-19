@@ -1,8 +1,7 @@
-import React from 'react'
 import './Sponsors.css'
 import SponsorsData from './sponsorsData'
 import { ComponentText, Sponsor } from './types'
-import text from '../../Assets/text.json'
+import text from '../../Assets/Text/main.json'
 
 function SponsorSection({ title, sponsors }: { title: string, sponsors: Sponsor[] }) {
     return (

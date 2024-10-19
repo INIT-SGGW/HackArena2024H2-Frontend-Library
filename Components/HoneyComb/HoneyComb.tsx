@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import "./HoneyComb.css";
-import useWindowWidth from "../../Hooks/useWindowWidth";
-import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
-import getEventStatus, { EventStatus } from "../../Utils/getEventStatus";
+
+import { Button, getEventStatus, EventStatus, useWindowWidth } from "../..";
 
 interface ComponentText {
     title: string;
@@ -54,7 +53,7 @@ function getImageAspectRatio(imageSrc: string): Promise<number> {
 
 
 
-const HexagonGrid = ({ image, defaultHexagonSize, gap, componentText }: Props) => {
+const HoneyComb = ({ image, defaultHexagonSize, gap, componentText }: Props) => {
     const navigate = useNavigate();
     const windowWidth = useWindowWidth();
 
@@ -340,4 +339,4 @@ const HexagonGrid = ({ image, defaultHexagonSize, gap, componentText }: Props) =
     );
 };
 
-export default HexagonGrid;
+export default HoneyComb;
