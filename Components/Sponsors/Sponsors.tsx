@@ -1,7 +1,11 @@
 import './Sponsors.css'
-import SponsorsData from './sponsorsData'
+
+//COMPONENTS
 import { ComponentText, Sponsor } from './types'
-import text from '../../Assets/Text/main.json'
+
+//ASSETS
+import SponsorsData from './sponsorsData'
+import text from '../../Assets/text.json'
 
 function SponsorSection({ title, sponsors }: { title: string, sponsors: Sponsor[] }) {
     return (

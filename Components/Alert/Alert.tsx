@@ -1,4 +1,6 @@
 import './Alert.css'
+
+//COMPONENTS
 import { Button } from '..'
 
 interface Props {

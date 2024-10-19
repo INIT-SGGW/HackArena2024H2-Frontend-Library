@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
 import './Page.css'
+import React, { useEffect } from 'react'
 
 interface PageProps {
     children: React.ReactNode;

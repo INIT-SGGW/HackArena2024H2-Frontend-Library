@@ -1,9 +1,12 @@
 import "./FileUploader.css";
-import { FileUploader as FU } from "react-drag-drop-files";
 import { useState } from "react";
-import text from "../../Assets/Text/main.json";
+
+//COMPONENTS
 import { Button } from "..";
 import { getEventStatus, EventStatus } from "../../Utils";
+
+//ASSETS
+import text from "../../Assets/Text/main.json";
 
 interface Props { }
 
@@ -14,13 +17,13 @@ enum FileStatus {
   SUCCESS,
   ERROR
 }
-
+//TODO: Remake this component
 function FileUploader(props: Props) {
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState<string>("");
   const [status, setStatus] = useState<FileStatus>(FileStatus.UNSELECTED);
   const fileTypes = ["zip"];
-  const fileText = text.fileUploader;
+  const fileText = text.fileUploader; //TODO: add text in assets/text.json
 
   const handleChange = (file: File) => {
     setMessage(file.name);
@@ -65,12 +68,12 @@ function FileUploader(props: Props) {
     <div className="file">
       <p>Dodaj swoje rozwiązanie poniżej</p>
       <div className="file--wrapper">
-        <FU
+        {/* <FU
           classes="file--input"
           label="Przeciągnij plik lub kliknij, aby wybrać"
           handleChange={handleChange}
           types={fileTypes}
-        />
+        /> */}
         {
           status !== FileStatus.UNSELECTED && <div className="file--sending">
             <span>{message}</span>

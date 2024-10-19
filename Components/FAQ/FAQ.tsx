@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
 import './FAQ.css'
-import ChevronIcon from "../../Assets/chevron-down.svg";
+import { useEffect, useRef, useState } from 'react'
+
+//COMPONENTS
 import { useWindowWidth } from '../../Hooks';
 
+//ASSETS
+import ChevronIcon from "../../Assets/chevron-down.svg";
 
 interface FAQProps {
     question: string;

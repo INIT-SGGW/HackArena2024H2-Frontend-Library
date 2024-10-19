@@ -1,5 +1,5 @@
-import { ChangePasswordRequestBody, ForgotPasswordRequestBody, LoginRequestBody, RegisterTeamMemberRequestBody, RegisterTeamRequestBody, ResetPasswordRequestBody } from "../Types"
-import CommunicationService from "./CommunicationService";
+import { ChangePasswordRequestBody, ForgotPasswordRequestBody, LoginRequestBody, RegisterTeamMemberRequestBody, RegisterTeamRequestBody, ResetPasswordRequestBody } from "../../../Types"
+import CommunicationService from "../CommunicationService";
 
 export default class AuthenticationService extends CommunicationService {
   static async registerTeam(body: RegisterTeamRequestBody): Promise<Response> {

@@ -1,1 +1,1 @@
-export * from "./ProtectedRoute";
+export { default as AdminProtectedRoute } from "./AdminProtectedRoute";

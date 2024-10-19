@@ -97,6 +97,10 @@ pre code {
   cursor: default;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 /* SKELETONS */
 
 .skeleton:empty {
@@ -190,6 +194,11 @@ h6 {
   margin: 0;
   width: fit-content;
 }
+/* 
+@font-face {
+  font-family: "RussoOne";
+  src: url("./Assets/Fonts/RussoOne/RussoOne-Regular.ttf") format("truetype");
+} */
 
 h1,
 h2,

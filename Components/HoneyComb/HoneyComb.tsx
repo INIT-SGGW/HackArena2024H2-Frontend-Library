@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
 import "./HoneyComb.css";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+//COMPONENTS
 import { Button, getEventStatus, EventStatus, useWindowWidth } from "../..";
 
 interface ComponentText {
@@ -50,8 +51,6 @@ function getImageAspectRatio(imageSrc: string): Promise<number> {
         img.src = imageSrc;
     });
 }
-
-
 
 const HoneyComb = ({ image, defaultHexagonSize, gap, componentText }: Props) => {
     const navigate = useNavigate();

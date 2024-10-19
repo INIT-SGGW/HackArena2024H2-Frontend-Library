@@ -1,5 +1,5 @@
-import { GetTestTaskResponseBody, SendGuessRequestBody } from "../Types";
-import CommunicationService from "./CommunicationService";
+import { SendGuessRequestBody } from "../../../Types";
+import CommunicationService from "../CommunicationService";
 
 export default class QualificationService extends CommunicationService {
     static async getTestTask(teamName: string): Promise<Response> {

@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState, TouchEvent } from "react";
 import "./PhotoGallery.css";
+import { useEffect, useRef, useState, TouchEvent } from "react";
 
+//ASSETS
 import CloseIcon from "../../Assets/close-cross.svg";
 import ChevronIcon from "../../Assets/chevron-down.svg";
 

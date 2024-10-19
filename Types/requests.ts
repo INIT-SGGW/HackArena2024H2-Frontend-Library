@@ -76,3 +76,24 @@ export type SendGuessRequestBody = {
     teamName: string;
     guess: string;
 }
+
+export interface AdminLoginRequestBody {
+    email: string;
+    password: string;
+}
+
+export interface AdminRegisterRequestBody {
+    email: string;
+    password: string;
+    name: string;
+    userName: string;
+}
+
+export enum ApprovedStatusRequest {
+    Approved = 'approved',
+    Rejected = 'denied',
+}
+
+export interface AdminApproveTeamRequestBody {
+    status: ApprovedStatusRequest;
+}

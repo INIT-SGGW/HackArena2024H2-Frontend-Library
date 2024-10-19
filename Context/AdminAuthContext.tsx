@@ -11,9 +11,7 @@ import { useNavigate } from "react-router-dom";
 // Define the shape of the authentication context
 interface AuthContextType {
   isAuthenticated: boolean | null;
-  email: string;
-  teamName: string;
-  login: (email: string, teamName: string) => void;
+  login: () => void;
   logout: () => void;
 }
 
@@ -21,18 +19,13 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Provider Component
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
-  const [email, setEmail] = useState<string>("");
-  const [teamName, setTeamName] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loginTime: string | null = localStorage.getItem("loginTime") || null;
-    const email: string | null = localStorage.getItem("email") || null;
-    const teamName: string | null = localStorage.getItem("teamName") || null;
-
-    if (!loginTime || !email || !teamName) {
+    const loginTime: string = localStorage.getItem("loginTime") || "";
+    if (!loginTime) {
       setIsAuthenticated(false);
     } else {
       const loginTimeDate = new Date(loginTime);
@@ -41,8 +34,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const oneDay = 24 * 60 * 60 * 1000;
       if (diff < oneDay) {
         setIsAuthenticated(true);
-        setEmail(JSON.parse(email));
-        setTeamName(JSON.parse(teamName));
       } else {
         setIsAuthenticated(false);
         localStorage.removeItem("loginTime");
@@ -50,38 +41,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   });
 
-  const login = (email: string, teamName: string) => {
+  const login = () => {
     setIsAuthenticated(true);
     localStorage.setItem("loginTime", new Date().toISOString());
-    localStorage.setItem("email", JSON.stringify(email));
-    localStorage.setItem("teamName", JSON.stringify(teamName));
-    setEmail(email);
-    setTeamName(teamName);
-    navigate("/account", { replace: true });
+    navigate("/");
   };
-
   const logout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("loginTime");
-    localStorage.removeItem("email");
-    localStorage.removeItem("teamName");
     navigate("/login", { replace: true });
   };
 
   return (
-    <AuthContext.Provider
-      value={{ isAuthenticated, email, teamName, login, logout }}
-    >
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 // Custom Hook for easy access to AuthContext
-export const useAuth = (): AuthContextType => {
+export const useAdminAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error("useAdminAuth must be used within an AuthProvider");
   }
   return context;
 };

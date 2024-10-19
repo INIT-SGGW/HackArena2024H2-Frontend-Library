@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
 import './Input.css'
+import React, { useEffect } from 'react'
+
+//COMPONENTS
 import { setErrorMessages } from '../../Utils'
 import { InputProps } from './types';
 

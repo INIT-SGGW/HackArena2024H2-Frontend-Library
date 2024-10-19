@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
 import './SocialMedia.css'
+import React, { useEffect } from 'react'
+
+//ASSETS
 import FacebookIcon from "../../Assets/facebook.svg";
 import InstagramIcon from "../../Assets/instagram.svg";
 import LinkedInIcon from "../../Assets/linkedin.svg";

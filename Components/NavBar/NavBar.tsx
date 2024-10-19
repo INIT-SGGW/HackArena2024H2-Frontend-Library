@@ -1,9 +1,12 @@
 import "./NavBar.css";
-import text from "../../Assets/Text/main.json";
 import { Link } from "react-router-dom";
+
+//COMPONENTS
 import { useWindowWidth } from "../../Hooks";
-import Menu from "../../Assets/menu.svg";
 import { NavItems } from "./types";
+
+//ASSETS
+import Menu from "../../Assets/menu.svg";
 
 export const NavBarButton = ({ text, link, setShowSidebar, special = false }: { text: string, link: string, setShowSidebar?: Function, special?: boolean }) => {
   return (

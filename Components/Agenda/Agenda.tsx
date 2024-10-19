@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react'
 import './Agenda.css'
-import text from "../../Assets/Text/main.json"
+
+import React, { useEffect } from 'react'
+
+//ASSETS
+import text from "../../Assets/text.json"
 import { AgendaData, ComponentText } from './types'
 import { agendaDataHackArena2 } from './AgendaData'
 

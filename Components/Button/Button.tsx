@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import './Button.css'
+import { useEffect, useRef } from 'react'
 
 interface ButtonProps {
     children: string

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { ReactNode, useEffect } from "react";
-import { useAuth } from "../Context";
+import { useAdminAuth } from "../Context";
 
-export default function ProtectedRoute({ children }: { children: ReactNode }) {
-    const { isAuthenticated } = useAuth();
+export default function AdminProtectedRoute({ children }: { children: ReactNode }) {
+    const { isAuthenticated } = useAdminAuth();
     const navigate = useNavigate();
 
     useEffect(() => {

@@ -1,7 +1,7 @@
-import { UpdateTeamRequestBody } from "../Types";
-import CommunicationService from "./CommunicationService";
+import { UpdateTeamRequestBody } from "../../../Types";
+import CommunicationService from "../CommunicationService";
 
-export default class AccountService extends CommunicationService {
+export default class TeamService extends CommunicationService {
   static async getTeam(teamName: string): Promise<Response> {
     const response = await fetch(this.API_URL + "/team/" + teamName, {
       method: "GET",
