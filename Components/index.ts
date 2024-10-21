@@ -13,5 +13,6 @@ export { default as Alert } from "./Alert/Alert";
 export { default as Agenda } from "./Agenda/Agenda";
 export { default as HoneyComb } from "./HoneyComb/HoneyComb";
 export { default as PhotoGallery } from "./PhotoGallery/PhotoGallery";
+export { default as EventListBanner } from "./EventListBanner/EventListBanner";
 
 export * from "./NavBar/types";
