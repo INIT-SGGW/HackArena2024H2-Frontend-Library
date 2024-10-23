@@ -604,16 +604,10 @@
     "checkbox": "To pole jest wymagane"
   },
   "fileUploader": {
-    "showing": {
-      "title": "Dodaj plik z rozwiązaniem poniżej",
-      "label": "Przeciągnij plik lub kliknij, aby wybrać",
-      "buttons": {
-        "send": "Wyślij",
-        "cancel": "Cofnij"
-      }
-    },
-    "hidden": {
-      "description": "Tutaj oddasz swoje rozwiązanie w trakcie trwanie HackAreny"
+    "label": "Kliknij, aby wybrać plik",
+    "buttons": {
+      "send": "Wyślij",
+      "disabled": "Przesyłanie..."
     }
   },
   "notFound": {
