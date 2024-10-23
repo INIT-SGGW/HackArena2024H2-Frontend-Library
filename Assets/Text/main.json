@@ -603,13 +603,6 @@
     "rangeUnderflow": "Wprowadź wartość większą lub równą {0}",
     "checkbox": "To pole jest wymagane"
   },
-  "fileUploader": {
-    "label": "Kliknij, aby wybrać plik",
-    "buttons": {
-      "send": "Wyślij",
-      "disabled": "Przesyłanie..."
-    }
-  },
   "notFound": {
     "meta": {
       "title": "Błąd 404 | HackArena",

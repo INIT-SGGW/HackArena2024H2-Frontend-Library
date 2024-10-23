@@ -3,7 +3,13 @@
         "title": "Agenda",
         "description": "Zobacz, co będzie się działo podczas HackAreny"
     },
-    "fileUploader": {},
+    "fileUploader": {
+      "label": "Kliknij, aby wybrać plik",
+      "buttons": {
+        "send": "Wyślij",
+        "disabled": "Przesyłanie..."
+      }
+    },
     "liveEventHighlight": {
         "title": {
             "closeToRegistration": "Start {0} o {1}",

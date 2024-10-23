@@ -1,26 +1,15 @@
 import "./FileUploader.css";
-import { MouseEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 //COMPONENTS
 import { Button } from "..";
-import { getEventStatus, EventStatus } from "../../Utils";
 
 //ASSETS
-import text from "../../Assets/Text/main.json";
+import text from "../../Assets/text.json";
 import { ComponentText } from "./types";
 import { useAuth } from "../../Context";
-import { TeamService } from "../../Services";
 
-interface Props { }
-
-enum FileStatus {
-  UNSELECTED,
-  SELECTED,
-  SENDING,
-  SUCCESS,
-  ERROR
-}
-function FileUploader(props: Props) {
+function FileUploader({ sendFile }: { sendFile: (file: File) => Promise<void> }) {
   const componentText: ComponentText = text.fileUploader;
   const fileTypes = ["zip"];
   const [file, setFile] = useState<File | null>(null);
@@ -45,21 +34,16 @@ function FileUploader(props: Props) {
     setInputDisabled(true);
     setError(null);
     if (file) {
-      TeamService.uploadSolution(teamName, file!).then((response) => {
-        if (response.status === 201) {
-          setMessage("Plik został wysłany");
-        } else {
-          setError("Wystąpił błąd podczas wysyłania pliku");
-        }
+      sendFile(file).then(() => {
+        setMessage(`Plik ${file.name} został wysłany`);
+        setFile(null);
       }).catch((error) => {
-        setError("Wystąpił błąd podczas wysyłania pliku");
+        setError(error.message);
       });
-
     } else {
       setError("Nie wybrano pliku");
     }
     setInputDisabled(false);
-
   }
 
   const handleClick = () => {
