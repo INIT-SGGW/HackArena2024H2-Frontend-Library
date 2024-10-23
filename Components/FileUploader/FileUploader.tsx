@@ -7,20 +7,17 @@ import { Button } from "..";
 //ASSETS
 import text from "../../Assets/text.json";
 import { ComponentText } from "./types";
-import { useAuth } from "../../Context";
 
-function FileUploader({ sendFile }: { sendFile: (file: File) => Promise<void> }) {
+function FileUploader({ sendFile, fileTypes }: { sendFile: (file: File) => Promise<void>, fileTypes: string[] }) {
   const componentText: ComponentText = text.fileUploader;
-  const fileTypes = ["zip"];
   const [file, setFile] = useState<File | null>(null);
   const [inputDisabled, setInputDisabled] = useState<boolean>(false);
   const [message, setMessage] = useState<string>(`${componentText.label} (${fileTypes.map((type) => `.${type}`).join(", ")})`);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { teamName } = useAuth();
 
   const handleChange = (file: File) => {
-    if (file && file.type !== "application/x-zip-compressed" && file.type !== "application/zip") {
+    if (file && !fileTypes.includes(file.name.split(".").pop()!)) {
       setError("Niepoprawny format pliku");
       return;
     }
@@ -36,7 +33,6 @@ function FileUploader({ sendFile }: { sendFile: (file: File) => Promise<void> })
     if (file) {
       sendFile(file).then(() => {
         setMessage(`Plik ${file.name} został wysłany`);
-        setFile(null);
       }).catch((error) => {
         setError(error.message);
       });
