@@ -35,7 +35,7 @@ export type SendGuessResponseBody = {
 
 export enum ApprovedStatus {
     Approved = 'approved',
-    Rejected = 'rejected',
+    Rejected = 'denied',
     Pending = 'pending'
 }
 
@@ -49,6 +49,18 @@ export interface GetAllTeamsResponseBody {
 }
 
 export interface TeamsData extends GetAllTeamsResponseBody { };
+
+
+export interface GetAllEventTeamsResponseBody {
+    teams: {
+        teamName: string
+        confirmationStatus: boolean;
+        solutionStatus: boolean;
+    }[]
+}
+
+export interface EventTeamsData extends GetAllEventTeamsResponseBody { };
+
 export interface getAllUsersResponseBody {
     users: {
         teamName: string;

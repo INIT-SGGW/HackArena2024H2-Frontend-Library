@@ -6,7 +6,7 @@ import { useWindowWidth } from '../..';
 import { computePosition, flip, shift } from '@floating-ui/react';
 
 interface DropDownProps {
-    clickEvent: React.MouseEvent;
+    clickEvent: React.MouseEvent | null;
     options: {
         title: string;
         onClick: Function;
@@ -16,9 +16,13 @@ interface DropDownProps {
 function DropDown({ clickEvent, options }: DropDownProps) {
     const dropDownRef = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
+    const [isOpen, setIsOpen] = React.useState(false);
+
 
     useEffect(() => {
-        if (dropDownRef.current) {
+        // console.log("ClickEvent", clickEvent?.target)
+        if (dropDownRef.current && clickEvent) {
+            setIsOpen(true)
             computePosition(clickEvent.target as HTMLElement, dropDownRef.current, {
                 placement: 'bottom',
                 middleware: [flip(), shift({ padding: 10 })]
@@ -28,19 +32,35 @@ function DropDown({ clickEvent, options }: DropDownProps) {
                     dropDownRef.current.style.top = `${y}px`;
                 }
             })
+        } else {
+            setIsOpen(false)
         }
     }, [clickEvent, windowWidth])
 
+    useEffect(() => {
+        if (clickEvent) {
+            setIsOpen(true)
+        }
+    }, [clickEvent])
+
+    const handleClick = (option: { title: string, onClick: Function }) => {
+        setIsOpen(false);
+        option.onClick();
+    }
+
     return (
-        <div className='dropdown' ref={dropDownRef}>
-            {
-                options !== null &&
-                options.map((option, index) => (
-                    <div key={index} className='dropdown__option' onClick={() => option.onClick()}>
-                        {option.title}
-                    </div>
-                ))}
-        </div>
+        <>
+
+            <div className={`dropdown${isOpen ? "" : " hidden"}`} ref={dropDownRef}>
+                {
+                    options !== null &&
+                    options.map((option, index) => (
+                        <div key={index} className='dropdown__option' onClick={() => handleClick(option)}>
+                            {option.title}
+                        </div>
+                    ))}
+            </div>
+        </>
     )
 }
 
