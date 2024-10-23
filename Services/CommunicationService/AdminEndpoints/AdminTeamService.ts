@@ -99,4 +99,47 @@ export default class AdminTeamService extends CommunicationService {
 
         return response;
     }
+
+    static async downloadSolution(teamName: string) {
+        const response = await fetch(this.API_URL + "/admin/solution/" + teamName, {
+            method: "GET",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Hack-Arena-API-Key": this.API_KEY,
+                "Hack-Arena-Admin-API-Key": this.ADMIN_API_KEY,
+            }
+        })
+
+        return response;
+    }
+
+    static async confirmTeam(teamName: string) {
+        const response = await fetch(this.API_URL + "/admin/team/confirmation/" + teamName, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Hack-Arena-API-Key": this.API_KEY,
+                "Hack-Arena-Admin-API-Key": this.ADMIN_API_KEY,
+            }
+        })
+
+        return response;
+    }
+
+    static async deleteTeam(teamName: string): Promise<Response> {
+        const response = await fetch(this.API_URL + "/admin/team/" + teamName, {
+            method: "DELETE",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Hack-Arena-API-Key": this.API_KEY,
+                "Hack-Arena-Admin-API-Key": this.ADMIN_API_KEY,
+            },
+        });
+
+        return response
+    }
 }
