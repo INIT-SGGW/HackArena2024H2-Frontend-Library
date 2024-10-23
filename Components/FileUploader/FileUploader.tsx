@@ -1,5 +1,5 @@
 import "./FileUploader.css";
-import { useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 
 //COMPONENTS
 import { Button } from "..";
@@ -7,6 +7,9 @@ import { getEventStatus, EventStatus } from "../../Utils";
 
 //ASSETS
 import text from "../../Assets/Text/main.json";
+import { ComponentText } from "./types";
+import { useAuth } from "../../Context";
+import { TeamService } from "../../Services";
 
 interface Props { }
 
@@ -17,76 +20,79 @@ enum FileStatus {
   SUCCESS,
   ERROR
 }
-//TODO: Remake this component
 function FileUploader(props: Props) {
-  const [file, setFile] = useState<File | null>(null);
-  const [message, setMessage] = useState<string>("");
-  const [status, setStatus] = useState<FileStatus>(FileStatus.UNSELECTED);
+  const componentText: ComponentText = text.fileUploader;
   const fileTypes = ["zip"];
-  const fileText = text.fileUploader; //TODO: add text in assets/text.json
+  const [file, setFile] = useState<File | null>(null);
+  const [inputDisabled, setInputDisabled] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>(`${componentText.label} (${fileTypes.map((type) => `.${type}`).join(", ")})`);
+  const [error, setError] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { teamName } = useAuth();
 
   const handleChange = (file: File) => {
-    setMessage(file.name);
-    setStatus(FileStatus.SELECTED);
-    setFile(file);
+    if (file && file.type !== "application/x-zip-compressed" && file.type !== "application/zip") {
+      setError("Niepoprawny format pliku");
+      return;
+    }
+    if (file) {
+      setFile(file);
+      setMessage(file.name);
+    }
   };
 
   const handleSendFile = () => {
-    setMessage("Wysyłanie pliku...")
-    setStatus(FileStatus.SENDING);
-    console.log("File: ", file);
-    // const teamName = localStorage.getItem("teamName") || "";
-    //   AccountService.uploadSolution(teamName, file as File).then((response) => {
-    //     if (response.status >= 200 && response.status < 300) {
-    //       setMessage("Plik został wysłany pomyślnie")
-    //       setStatus(FileStatus.SUCCESS);
-    //     } else {
-    //       throw new Error("Wystąpił błąd podczas wysyłania pliku")
-    //     }
-    //   }).catch((error) => {
-    //     setMessage("Wystąpił błąd podczas wysyłania pliku")
-    //     setStatus(FileStatus.ERROR);
-    //     setFile(null);
-    //   });
+    setInputDisabled(true);
+    setError(null);
+    if (file) {
+      TeamService.uploadSolution(teamName, file!).then((response) => {
+        if (response.status === 201) {
+          setMessage("Plik został wysłany");
+        } else {
+          setError("Wystąpił błąd podczas wysyłania pliku");
+        }
+      }).catch((error) => {
+        setError("Wystąpił błąd podczas wysyłania pliku");
+      });
+
+    } else {
+      setError("Nie wybrano pliku");
+    }
+    setInputDisabled(false);
+
   }
 
-  const handleCancel = () => {
-    setMessage("");
-    setStatus(FileStatus.UNSELECTED);
-    setFile(null);
-    const span = document.querySelector(".kFhUBM") as HTMLSpanElement;
-    span.innerHTML = fileText.showing.label;
-  }
-
-  if (getEventStatus() === EventStatus.EventLive) {
-    return (
-      <p>Tutaj oddasz swoje rozwiązanie w trakcie trwanie HackAreny </p>
-    )
+  const handleClick = () => {
+    if (inputRef) {
+      inputRef.current?.click();
+    }
   }
 
   return (
-    <div className="file">
-      <p>Dodaj swoje rozwiązanie poniżej</p>
-      <div className="file--wrapper">
-        {/* <FU
-          classes="file--input"
-          label="Przeciągnij plik lub kliknij, aby wybrać"
-          handleChange={handleChange}
-          types={fileTypes}
-        /> */}
-        {
-          status !== FileStatus.UNSELECTED && <div className="file--sending">
-            <span>{message}</span>
-            {status !== FileStatus.SENDING &&
-              <div>
-                <Button onClick={handleCancel} className={`file--button btn btn__secondary${status !== FileStatus.SUCCESS ? " file--button__halfborder" : ""}`}>Cofnij</Button>
-                {status !== FileStatus.SUCCESS && <Button onClick={handleSendFile} className="file--button btn btn__secondary file--button__halfborder">Wyślij</Button>}
-              </div>
-            }
-          </div>
-        }
+    <div className="file--wrapper" >
+      <div className="file">
+        <input type="file" ref={inputRef} className="file--input" accept={fileTypes.map((type) => `.${type}`).join(", ")} onChange={(e) => handleChange(e.target.files![0])} />
+        <div className="file--content" onClick={handleClick}>
+          <span>{message}</span>
+          <Button onClick={handleSendFile} disabled={inputDisabled} className={`btn btn__primary`} border>{inputDisabled ? componentText.buttons.disabled : componentText.buttons.send}</Button>
+        </div>
 
-      </div>
+        {/* {
+            status !== FileStatus.UNSELECTED && <div className="file--sending">
+              <span>{message}</span>
+              {status !== FileStatus.SENDING &&
+                <div>
+                  <Button onClick={handleCancel} className={`file--button btn btn__secondary${status !== FileStatus.SUCCESS ? " file--button__halfborder" : ""}`}>Cofnij</Button>
+                  {status !== FileStatus.SUCCESS && <Button onClick={handleSendFile} className="file--button btn btn__secondary file--button__halfborder">Wyślij</Button>}
+                </div>
+              }
+            </div>
+          } */}
+
+      </div >
+      <span className={`input__span${error ? " input__span--visible" : ""}`}>
+        {error}
+      </span>
     </div >
   );
 }
