@@ -60,19 +60,6 @@ function FileUploader({ sendFile }: { sendFile: (file: File) => Promise<void> })
           <span>{message}</span>
           <Button onClick={handleSendFile} disabled={inputDisabled} className={`btn btn__primary`} border>{inputDisabled ? componentText.buttons.disabled : componentText.buttons.send}</Button>
         </div>
-
-        {/* {
-            status !== FileStatus.UNSELECTED && <div className="file--sending">
-              <span>{message}</span>
-              {status !== FileStatus.SENDING &&
-                <div>
-                  <Button onClick={handleCancel} className={`file--button btn btn__secondary${status !== FileStatus.SUCCESS ? " file--button__halfborder" : ""}`}>Cofnij</Button>
-                  {status !== FileStatus.SUCCESS && <Button onClick={handleSendFile} className="file--button btn btn__secondary file--button__halfborder">Wyślij</Button>}
-                </div>
-              }
-            </div>
-          } */}
-
       </div >
       <span className={`input__span${error ? " input__span--visible" : ""}`}>
         {error}
