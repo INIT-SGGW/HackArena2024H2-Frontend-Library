@@ -45,22 +45,22 @@ export default class TeamService extends CommunicationService {
     return response
   }
 
-  // static async uploadSolution(teamName: string, solution: File) {
-  //   const formData = new FormData();
-  //   formData.append("file", solution);
+  static async uploadSolution(teamName: string, solution: File) {
+    const formData = new FormData();
+    formData.append("file", solution);
 
-  //   const response = await fetch(this.API_URL + "/" + teamName + "/upload/file", {
-  //     method: "POST",
-  //     mode: "cors",
-  //     credentials: "include",
-  //     headers: {
-  //       "Hack-Arena-API-Key": this.API_KEY,
-  //     },
-  //     body: formData,
-  //   });
+    const response = await fetch(this.API_URL + "/upload/solution/" + teamName, {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Hack-Arena-API-Key": this.API_KEY,
+      },
+      body: formData,
+    });
 
-  //   return response;
-  // }
+    return response;
+  }
 
   // static async downloadSolution(teamName: string) {
   //   const response = await fetch(this.API_URL + "/admin/download/" + teamName + "/file", {
