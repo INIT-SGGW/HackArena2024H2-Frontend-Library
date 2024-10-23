@@ -101,54 +101,8 @@ pre code {
   cursor: pointer;
 }
 
-/* SKELETONS */
-
-.skeleton:empty {
-  width: 100px;
-  /* animation: skeleton-loading 1s linear infinite alternate; */
-  border-radius: 15px;
-  display: block;
-  height: 1em;
-  --one-color: rgba(255, 210, 0);
-  --two-color: rgb(255, 229, 114);
-  background: linear-gradient(
-    45deg,
-    var(--one-color) 0%,
-    var(--one-color) 10%,
-    var(--two-color) 50%,
-    var(--one-color) 90%,
-    var(--one-color) 100%
-  );
-  background-position: -60px;
-  animation: shimmer 10s linear infinite;
-}
-
-.skeleton:empty[skeleton-width="200px"] {
-  width: 200px;
-}
-.skeleton:empty[skeleton-width="300px"] {
-  width: 300px;
-}
-.skeleton:empty[skeleton-width="400px"] {
-  width: 400px;
-}
-.skeleton:empty[skeleton-width="500px"] {
-  width: 500px;
-}
-.skeleton:empty[skeleton-width="600px"] {
-  width: 600px;
-}
-.skeleton:empty[skeleton-width="700px"] {
-  width: 700px;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+.text-align-left {
+  text-align: left !important;
 }
 
 /* SCREEN SIZES */
