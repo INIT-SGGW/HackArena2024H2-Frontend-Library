@@ -23,13 +23,13 @@ function Button({ children, className, width, disabled = false, type = "button",
 
     return (
         <div className={`button${disabled ? " not-clickable" : ""}`} style={{ width }} ref={buttonDivRef}>
-            <button type={type} disabled={disabled} className={`${className}${disabled ? " button--disabled" : ""}`} onClick={onClick}>{children}</button>
+            <button type={type} disabled={disabled} className={`${className}${disabled ? " button--disabled" : ""}`} onClick={(e) => { e.stopPropagation(); onClick() }}>{children}</button>
             <div className={`button__double${disabled ? " hidden" : ""}`}>
                 <button
                     type={type}
                     disabled={disabled}
                     className={`${className}${border ? "-border" : ""}-hover`}
-                    onClick={onClick}
+                    onClick={(e) => { e.stopPropagation(); onClick() }}
                     ref={buttonRef}
                 >
                     {children}
