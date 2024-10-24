@@ -1,0 +1,43 @@
+.statues {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.statues p {
+  font-size: 0.6rem;
+  color: var(--secondary-color);
+}
+
+.statues__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  padding-top: 0;
+  gap: 0.3rem 1rem;
+  flex-wrap: wrap;
+}
+
+.statues__row > a,
+.statues__row > span {
+  color: var(--text-one-color);
+  font-size: 0.6rem;
+}
+
+.statues__row > a {
+  text-decoration: none;
+}
+
+.statues__row:nth-child(odd) {
+  text-align: right;
+}
+
+.statues__row:nth-child(even) {
+  text-align: left;
+}
