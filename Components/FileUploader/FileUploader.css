@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.file--error {
+  border-color: var(--warning-color) !important;
+}
+
 .file--content {
   display: flex;
   justify-content: space-between;
@@ -21,16 +25,22 @@
   gap: 0.5rem;
 }
 
-.file--content > span {
+.file--text > span {
   color: var(--text-one-color);
   font-size: 0.8rem;
+  line-height: 1.2em;
   /* min-width: 200px;
   flex-shrink: 1; */
 }
 
-.file--content > div {
+.file--text-error > span {
+  color: var(--warning-color) !important;
+}
+
+.file--text {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 0rem;
 }
 
 .file--input {
