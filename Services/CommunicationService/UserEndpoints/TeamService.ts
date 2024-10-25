@@ -62,16 +62,16 @@ export default class TeamService extends CommunicationService {
     return response;
   }
 
-  // static async downloadSolution(teamName: string) {
-  //   const response = await fetch(this.API_URL + "/admin/download/" + teamName + "/file", {
-  //     method: "GET",
-  //     mode: "cors",
-  //     credentials: "include",
-  //     headers: {
-  //       "Hack-Arena-API-Key": this.API_KEY,
-  //     },
-  //   });
+  static async downloadMatchFile(teamName: string) {
+    const response = await fetch(this.API_URL + "/match/" + teamName, {
+      method: "GET",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Hack-Arena-API-Key": this.API_KEY,
+      },
+    });
 
-  //   return response;
-  // }
+    return response;
+  }
 }
