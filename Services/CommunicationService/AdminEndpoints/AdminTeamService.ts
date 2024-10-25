@@ -142,4 +142,22 @@ export default class AdminTeamService extends CommunicationService {
 
         return response
     }
+
+    static async uploadMatchFile(teamName: string, file: File) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch(this.API_URL + "/admin/upload/match/" + teamName, {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Hack-Arena-API-Key": this.API_KEY,
+                "Hack-Arena-Admin-API-Key": this.ADMIN_API_KEY,
+            },
+            body: formData
+        })
+
+        return response;
+    }
 }
