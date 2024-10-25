@@ -74,4 +74,17 @@ export default class TeamService extends CommunicationService {
 
     return response;
   }
+
+  static async getMatchName(teamName: string) {
+    const response = await fetch(this.API_URL + "/check/match/" + teamName, {
+      method: "GET",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Hack-Arena-API-Key": this.API_KEY,
+      },
+    });
+
+    return response;
+  }
 }

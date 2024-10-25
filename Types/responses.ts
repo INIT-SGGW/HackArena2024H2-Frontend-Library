@@ -73,3 +73,8 @@ export interface getAllUsersResponseBody {
 }
 
 export interface UsersData extends getAllUsersResponseBody { };
+
+export interface GetMatchNameResponseBody {
+    isMatchFileSend: boolean;
+    MatchFileName: string;
+}
