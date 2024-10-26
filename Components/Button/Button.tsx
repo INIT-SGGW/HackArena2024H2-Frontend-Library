@@ -5,13 +5,14 @@ interface ButtonProps {
     children: string
     className: string
     disabled?: boolean
+    backgroundColor?: string
     type?: "submit" | "button"
     width?: string
     border?: boolean
     onClick: () => void
 }
 
-function Button({ children, className, width, disabled = false, type = "button", border = false, onClick }: ButtonProps) {
+function Button({ children, className, width, backgroundColor, disabled = false, type = "button", border = false, onClick }: ButtonProps) {
     const buttonDivRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -23,11 +24,12 @@ function Button({ children, className, width, disabled = false, type = "button",
 
     return (
         <div className={`button${disabled ? " not-clickable" : ""}`} style={{ width }} ref={buttonDivRef}>
-            <button type={type} disabled={disabled} className={`${className}${disabled ? " button--disabled" : ""}`} onClick={(e) => { e.stopPropagation(); onClick() }}>{children}</button>
+            <button type={type} disabled={disabled} style={{ backgroundColor: backgroundColor, borderColor: backgroundColor }} className={`${className}${disabled ? " button--disabled" : ""}`} onClick={(e) => { e.stopPropagation(); onClick() }}>{children}</button>
             <div className={`button__double${disabled ? " hidden" : ""}`}>
                 <button
                     type={type}
                     disabled={disabled}
+                    style={{ borderColor: backgroundColor, color: backgroundColor }}
                     className={`${className}${border ? "-border" : ""}-hover`}
                     onClick={(e) => { e.stopPropagation(); onClick() }}
                     ref={buttonRef}

@@ -13,6 +13,10 @@
   border-color: var(--warning-color) !important;
 }
 
+.file--success {
+  border-color: #8bd15c !important;
+}
+
 .file--content {
   display: flex;
   justify-content: space-between;
@@ -35,6 +39,10 @@
 
 .file--text-error > span {
   color: var(--warning-color) !important;
+}
+
+.file--text-success > span {
+  color: #8bd15c !important;
 }
 
 .file--text {

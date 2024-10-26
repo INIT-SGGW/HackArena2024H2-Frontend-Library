@@ -160,4 +160,18 @@ export default class AdminTeamService extends CommunicationService {
 
         return response;
     }
+
+    static async downloadAllSolutions() {
+        const response = await fetch(this.API_URL + "/admin/solutions", {
+            method: "GET",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Hack-Arena-API-Key": this.API_KEY,
+                "Hack-Arena-Admin-API-Key": this.ADMIN_API_KEY,
+            }
+        })
+
+        return response;
+    }
 }

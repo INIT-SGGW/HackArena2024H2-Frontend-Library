@@ -57,6 +57,7 @@ export interface GetAllEventTeamsResponseBody {
         confirmationStatus: boolean;
         solutionStatus: boolean;
         approvedStatus: ApprovedStatus;
+        createdAt: string;
     }[]
 }
 
