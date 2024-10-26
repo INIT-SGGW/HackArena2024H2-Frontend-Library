@@ -1,5 +1,5 @@
 import "./FileUploader.css";
-import { useEffect, useRef, useState } from "react";
+import { DragEventHandler, useEffect, useRef, useState } from "react";
 
 //COMPONENTS
 import { Button } from "..";
@@ -16,7 +16,7 @@ function FileUploader({ sendFile, fileTypes }: { sendFile: (file: File) => Promi
   const [error, setError] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [success, setSuccess] = useState<boolean>(false);
-
+  const DivRef = useRef<HTMLDivElement>(null);
 
 
 
@@ -61,9 +61,50 @@ function FileUploader({ sendFile, fileTypes }: { sendFile: (file: File) => Promi
     }
   }
 
+  const preventDefaults = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  const highlightDropArea = () => {
+    DivRef.current?.classList.add('highlight');
+  };
+
+  // Remove highlight from drop area on drag leave and drop
+  const unhighlightDropArea = () => {
+    DivRef.current?.classList.remove('highlight');
+  };
+
+  // Handle files dropped on the drop area
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    preventDefaults(e);
+    unhighlightDropArea();
+
+    const files = e.dataTransfer.files;
+    if (files.length > 1) {
+      setMessage("Można przesłać tylko jeden plik");
+      setError(true);
+      return;
+    } else {
+      handleChange(files[0]);
+    }
+  };
+
   return (
     <div className="file--wrapper" >
-      <div className={`file${error ? " file--error" : ""}${success ? " file--success" : ""}`}>
+      <div
+        className={`file${error ? " file--error" : ""}${success ? " file--success" : ""}`}
+        onDrop={handleDrop}
+        onDragEnter={(e) => {
+          preventDefaults(e);
+          highlightDropArea();
+        }}
+        onDragOver={(e) => {
+          preventDefaults(e);
+        }}
+        onDragLeave={unhighlightDropArea}
+        ref={DivRef}
+      >
         <input
           type="file"
           ref={inputRef}
