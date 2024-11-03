@@ -1,0 +1,32 @@
+.anchor {
+  position: relative;
+  text-wrap: nowrap;
+}
+
+.anchor a {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.anchor__double {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+  transition: all var(--hover-transition-time) ease-out;
+}
+
+.anchor--disabled {
+  background-color: var(--input-disabled-color);
+  border-color: var(--input-disabled-color);
+}
+
+@media screen and (min-width: 600px) {
+  .anchor:hover .anchor__double {
+    width: 100%;
+  }
+}
