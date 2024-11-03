@@ -20,7 +20,7 @@ function Statues({ statuesData }: { statuesData: { title: string, fileName: stri
                     })
                 }
             </div>
-            <p>© 2021 HackArena</p>
+            <p>© {new Date().getFullYear()} HackArena</p>
 
         </div>
     )
