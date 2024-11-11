@@ -4,6 +4,10 @@
   gap: 0.5rem;
 }
 
+.event-list-banner + .event-list-banner {
+  margin-top: 0.5rem;
+}
+
 .event-list-banner > div {
   position: relative;
   display: flex;
