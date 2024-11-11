@@ -14,7 +14,9 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
 
     useEffect(() => {
         document.addEventListener("keydown", (event) => {
-            if (event.key === "ArrowRight") {
+            if (event.key === "Escape") {
+                setIsZoomed(false);
+            } else if (event.key === "ArrowRight") {
                 handleNextPhoto();
             } else if (event.key === "ArrowLeft") {
                 handlePreviousPhoto();
@@ -24,12 +26,11 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
         return () => {
             document.removeEventListener("keydown", () => { });
         };
-    });
+    }, []);
 
     useEffect(() => {
         if (isZoomed && CarouselRef.current !== null) {
-            CarouselRef.current.style.transform = `translateX(-${currentPhoto * 100
-                }vw)`;
+            CarouselRef.current.style.transform = `translateX(-${currentPhoto * 100}vw)`;
         }
     }, [currentPhoto, isZoomed]);
 
@@ -96,21 +97,24 @@ const PhotoGallery = ({ photos }: { photos: string[] }) => {
                     }`}
             >
                 <div className="photo-gallery__controls">
-                    <img src={CloseIcon} alt="close" onClick={() => setIsZoomed(false)} />
-                    <div>
-                        <img
-                            src={ChevronIcon}
-                            className={`${currentPhoto > 0 ? "" : "hidden"}`}
-                            alt="left"
-                            onClick={() => handlePreviousPhoto()}
-                        />
-                        <img
-                            src={ChevronIcon}
-                            className={`${currentPhoto < photos.length - 1 ? "" : "hidden"}`}
-                            alt="right"
-                            onClick={() => handleNextPhoto()}
-                        />
-                    </div>
+                    <img
+                        className="phtoto-gallery-close"
+                        src={CloseIcon}
+                        alt="close"
+                        onClick={() => setIsZoomed(false)}
+                    />
+                    <img
+                        src={ChevronIcon}
+                        className={`photo-gallery-next${currentPhoto > 0 ? "" : " hidden"}`}
+                        alt="left"
+                        onClick={() => handlePreviousPhoto()}
+                    />
+                    <img
+                        src={ChevronIcon}
+                        className={`photo-gallery-previous${currentPhoto < photos.length - 1 ? "" : " hidden"}`}
+                        alt="right"
+                        onClick={() => handleNextPhoto()}
+                    />
                 </div>
                 <div className="photo-gallery__carousel" ref={CarouselRef}>
                     {photos.map((photo: string, index: number) => (

@@ -47,7 +47,7 @@
   position: absolute;
 }
 
-.photo-gallery__controls > img {
+.phtoto-gallery-close {
   width: 2rem;
   position: absolute;
   right: 0;
@@ -56,27 +56,34 @@
   z-index: 1;
 }
 
-.photo-gallery__controls > div {
+.photo-gallery-previous,
+.photo-gallery-next {
   position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
   transform: translateY(-50%);
   box-sizing: border-box;
+  padding: 10px;
   z-index: 1;
-}
+  top: calc(
+    50% - 1.5rem
+  ); /* 50% - half of the height of the button, because rotation moved it down */
 
-.photo-gallery__controls > div > img {
   width: 3rem;
   cursor: pointer;
 }
 
+.photo-gallery-previous {
+  right: 0;
+  transform: rotate(-90deg);
+}
+
+.photo-gallery-next {
+  left: 0;
+  transform: rotate(90deg);
+}
+
 @media screen and (max-width: 1000px) {
-  .photo-gallery__controls > div > img {
+  .photo-gallery-previous,
+  .photo-gallery-next {
     background-color: rgba(0, 0, 0, 0.76);
     border-radius: 50%;
     padding: 0.2rem;
@@ -87,14 +94,6 @@
   .photo-gallery__controls > div {
     visibility: hidden;
   }
-}
-
-.photo-gallery__controls > div > img:nth-child(1) {
-  transform: rotate(90deg);
-}
-
-.photo-gallery__controls > div > img:nth-child(2) {
-  transform: rotate(-90deg);
 }
 
 .photo-gallery__carousel {
