@@ -1,25 +1,28 @@
 import './Statues.css'
 
-function Statues({ statuesData }: { statuesData: { title: string, fileName: string }[] }) {
+function Statues({ statuesData }: { statuesData?: { title: string, fileName: string }[] }) {
     return (
         <div className="statues">
-            <div className='statues__row'>
-                {
-                    statuesData.map((statue, index) => {
-                        if ((index + 1) % statuesData.length === 0) {
+            {
+                statuesData &&
+                <div className='statues__row'>
+                    {
+                        statuesData.map((statue, index) => {
+                            if ((index + 1) % statuesData.length === 0) {
+                                return (
+                                    <a key={index} href={`/Assets/Regulaminy/${statue.fileName}`}>{statue.title}</a>
+                                )
+                            }
                             return (
-                                <a key={index} href={`/Assets/Regulaminy/${statue.fileName}`}>{statue.title}</a>
+                                <>
+                                    <a href={`/Assets/Regulaminy/${statue.fileName}`}>{statue.title}</a>
+                                    <span>|</span>
+                                </>
                             )
-                        }
-                        return (
-                            <>
-                                <a href={`/Assets/Regulaminy/${statue.fileName}`}>{statue.title}</a>
-                                <span>|</span>
-                            </>
-                        )
-                    })
-                }
-            </div>
+                        })
+                    }
+                </div>
+            }
             <p>© {new Date().getFullYear()} HackArena</p>
 
         </div>
