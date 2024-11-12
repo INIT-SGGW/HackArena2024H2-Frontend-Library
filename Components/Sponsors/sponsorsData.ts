@@ -15,91 +15,94 @@ import SGGWLogo from "../../Assets/sggw_logo_white.png";
 import CoffeeHeroesRosteryLogo from "../../Assets/Sponsors/coffee_heroes_roastery.png";
 import Bempresa from "../../Assets/Sponsors/bempresa.png";
 
-const SponsorsData: SponsorData = {
-    sponsors: [
-        {
-            name: "MevSpace",
-            logo: MevSpaceLogo,
-            url: "https://mevspace.com/"
-        },
-        {
-            name: "Kocham Skakać",
-            logo: KochamSkakacLogo,
-            url: "https://kochamskakac.pl/"
-        },
-        {
-            name: "CosmoEye",
-            logo: CosomoEyeLogo,
-            url: "https://cosmoeye.ai/"
-        },
-        {
-            name: "Bempresa",
-            logo: Bempresa,
-            url: "http://bempresa.com/"
-        }
-    ],
-    partners: [
-        {
-            name: "Fabbrica",
-            logo: FabbricaLogo,
-            url: "https://www.fabbrica.pl/",
-            height: 60
-        },
-        {
-            name: "Uland",
-            logo: UlandLogo,
-            url: "https://www.uland.pl/",
-            height: 60
-        },
-        {
-            name: "Coffee Heroes Rostery",
-            logo: CoffeeHeroesRosteryLogo,
-            url: "https://www.instagram.com/coffee_heroes_roastery?igsh=Y29xOWxvNTJqbXR0",
-            height: 60
-        }
+const SponsorsData: { [key: string]: SponsorData } = {
+    "hackarena1_0": {},
+    "hackarena2_0": {
+        sponsors: [
+            {
+                name: "MevSpace",
+                logo: MevSpaceLogo,
+                url: "https://mevspace.com/"
+            },
+            {
+                name: "Kocham Skakać",
+                logo: KochamSkakacLogo,
+                url: "https://kochamskakac.pl/"
+            },
+            {
+                name: "CosmoEye",
+                logo: CosomoEyeLogo,
+                url: "https://cosmoeye.ai/"
+            },
+            {
+                name: "Bempresa",
+                logo: Bempresa,
+                url: "http://bempresa.com/"
+            }
+        ],
+        partners: [
+            {
+                name: "Fabbrica",
+                logo: FabbricaLogo,
+                url: "https://www.fabbrica.pl/",
+                height: 60
+            },
+            {
+                name: "Uland",
+                logo: UlandLogo,
+                url: "https://www.uland.pl/",
+                height: 60
+            },
+            {
+                name: "Coffee Heroes Rostery",
+                logo: CoffeeHeroesRosteryLogo,
+                url: "https://www.instagram.com/coffee_heroes_roastery?igsh=Y29xOWxvNTJqbXR0",
+                height: 60
+            }
 
-    ],
-    mediaPatronage: [
-        {
-            name: "Grupa StudentNews",
-            logo: StudentNewsLogo,
-            url: "https://grupa.studentnews.pl/"
-        },
-        {
-            name: "Mam Startup",
-            logo: MamStartupLogo,
-            url: "https://mamstartup.pl/"
-        },
-        {
-            name: "Just Join IT",
-            logo: JustJoinITLogo,
-            url: "https://justjoin.it/"
-        },
-        {
-            name: "Crossweb",
-            logo: CrossWebLogo,
-            url: "https://crossweb.pl/"
-        },
-        {
-            name: "ScrumDo",
-            logo: ScrumDoLogo,
-            url: "https://scrumdo.pl/"
-        }
-    ],
-    patronage: [
-        {
-            name: "Patronat honorowy Burmistrza dzielnicy Ursynów",
-            logo: UrsynowLogo,
-            url: "https://ursynow.um.warszawa.pl/",
-            height: 60
-        },
-        {
-            name: "Patronat honorowy Rektora Szkoły Głównej Gospodarstwa Wiejskiego",
-            logo: SGGWLogo,
-            url: "https://www.sggw.edu.pl/",
-            height: 60
-        }
-    ]
+        ],
+        mediaPatronage: [
+            {
+                name: "Grupa StudentNews",
+                logo: StudentNewsLogo,
+                url: "https://grupa.studentnews.pl/"
+            },
+            {
+                name: "Mam Startup",
+                logo: MamStartupLogo,
+                url: "https://mamstartup.pl/"
+            },
+            {
+                name: "Just Join IT",
+                logo: JustJoinITLogo,
+                url: "https://justjoin.it/"
+            },
+            {
+                name: "Crossweb",
+                logo: CrossWebLogo,
+                url: "https://crossweb.pl/"
+            },
+            {
+                name: "ScrumDo",
+                logo: ScrumDoLogo,
+                url: "https://scrumdo.pl/"
+            }
+        ],
+        patronage: [
+            {
+                name: "Patronat honorowy Burmistrza dzielnicy Ursynów",
+                logo: UrsynowLogo,
+                url: "https://ursynow.um.warszawa.pl/",
+                height: 60
+            },
+            {
+                name: "Patronat honorowy Rektora Szkoły Głównej Gospodarstwa Wiejskiego",
+                logo: SGGWLogo,
+                url: "https://www.sggw.edu.pl/",
+                height: 60
+            }
+        ]
+    }
 }
 
 export default SponsorsData;

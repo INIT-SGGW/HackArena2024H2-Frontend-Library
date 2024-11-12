@@ -4,6 +4,21 @@
   align-items: center;
 }
 
+.sponsors__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.sponsors__text > h2 {
+  margin-bottom: 1rem;
+}
+
+.sponsors__text > p {
+  color: var(--accent-color);
+}
+
 .sponsors__section {
   display: flex;
   flex-direction: column;
@@ -36,5 +51,5 @@
 }
 
 .sponsors__section div a img {
-  height: 40px;
+  height: 30px;
 }
