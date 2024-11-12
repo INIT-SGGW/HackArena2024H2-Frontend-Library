@@ -20,11 +20,13 @@
         "button": "Zarejestruj się"
     },
     "sponsors": {
-    "titles": {
-      "sponsors": "Sponsorzy",
-      "partners": "Partnerzy",
-      "mediaPatronage": "Patronat medialny",
-      "patronage": "Patronat"
-    }
+      "title": "Sponsorzy",
+      "description": "Dziękujemy naszym sponsorom za wsparcie",
+      "titles": {
+        "sponsors": "Sponsorzy",
+        "partners": "Partnerzy",
+        "mediaPatronage": "Patronat medialny",
+        "patronage": "Patronat"
+      }
   }
 }
