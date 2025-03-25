@@ -56,7 +56,7 @@ const SponsorsData: { [key: string]: SponsorData } = {
             {
                 name: "Coffee Heroes Rostery",
                 logo: CoffeeHeroesRosteryLogo,
-                url: "https://www.instagram.com/coffee_heroes_roastery?igsh=Y29xOWxvNTJqbXR0",
+                url: "https://coffee-heroes-roastery.pl/",
                 height: 60
             }
 
